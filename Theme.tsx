@@ -64,6 +64,11 @@ const theme = createTheme({
       lineHeight: 16,
       textAlign: "center",
     },
+    inputLabel: {
+      fontWeight: "400",
+      fontSize: 12,
+      lineHeight: 16,
+    },
   },
 });
 

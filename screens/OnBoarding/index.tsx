@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  StatusBar,
-  StyleSheet,
-  View,
-} from "react-native";
+import { Dimensions, Image, Pressable, StyleSheet, View } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -17,6 +10,7 @@ import Animated, {
 import { LOGIN } from "../../navigators/Routes";
 import theme, { CustomText } from "../../Theme";
 import * as RootNavigator from "../../util/RootNavigator";
+import OnBoardingHeader from "./components/Header";
 
 interface OnBoardingProps {}
 
@@ -38,18 +32,8 @@ export default function OnBoarding() {
   return (
     <View style={styles.container}>
       {/* Header  */}
-      <View style={styles.header}>
-        <CustomText variant="button" style={styles.skipButtonHidden}>
-          Skip
-        </CustomText>
-        <Image source={require("../../assets/logo.png")} style={styles.logo} />
-        <Pressable>
-          <CustomText variant="button" style={styles.skipButton}>
-            Skip
-          </CustomText>
-        </Pressable>
-      </View>
-
+      <OnBoardingHeader />
+      {/* Slider */}
       <Animated.View style={mainTextContainer}>
         <CustomText variant="header1" style={styles.mainText}>
           Order from your favourite stores or vendors
@@ -61,7 +45,6 @@ export default function OnBoarding() {
           Enjoy instant delivery and payment
         </CustomText>
       </Animated.View>
-      {/* Slider */}
 
       <Animated.ScrollView
         horizontal
@@ -143,24 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background,
   },
-  header: {
-    marginTop: StatusBar.currentHeight,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: theme.spacing.m,
-    marginBottom: theme.spacing.xl,
-  },
-  logo: {
-    width: 20,
-    height: 20,
-  },
-  skipButton: {
-    color: theme.colors.gradient,
-  },
-  skipButtonHidden: {
-    opacity: 0,
-  },
+
   mainText: {
     paddingHorizontal: theme.spacing.l,
   },
