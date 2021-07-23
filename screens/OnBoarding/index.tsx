@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Dimensions, Image, Pressable, StyleSheet, View } from "react-native";
 import Animated, {
   Extrapolate,
@@ -7,16 +7,18 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
-import { LOGIN } from "../../navigators/Routes";
+import { LOGIN, REGISTER } from "../../navigators/Routes";
 import theme, { CustomText } from "../../Theme";
 import * as RootNavigator from "../../util/RootNavigator";
 import OnBoardingHeader from "./components/Header";
 
-interface OnBoardingProps {}
+interface OnBoardingProps {
+  setAuthentication: Dispatch<SetStateAction<boolean>>;
+}
 
 const { width } = Dimensions.get("window");
 const DOTS = [0, 1, 2];
-export default function OnBoarding() {
+export default function OnBoarding({ setAuthentication }: OnBoardingProps) {
   const scrollX = useSharedValue(0);
   const slideHandler = useAnimatedScrollHandler((event) => {
     scrollX.value = event.contentOffset.x;
@@ -32,7 +34,7 @@ export default function OnBoarding() {
   return (
     <View style={styles.container}>
       {/* Header  */}
-      <OnBoardingHeader />
+      <OnBoardingHeader {...{ setAuthentication }} />
       {/* Slider */}
       <Animated.View style={mainTextContainer}>
         <CustomText variant="header1" style={styles.mainText}>
@@ -102,7 +104,7 @@ export default function OnBoarding() {
 
       <Pressable
         style={styles.registerButton}
-        onPress={() => console.log("register")}
+        onPress={() => RootNavigator.navigate(REGISTER)}
       >
         <CustomText variant="button" style={styles.registerButtonText}>
           Create an account

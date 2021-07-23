@@ -1,5 +1,4 @@
-import React, { SetStateAction } from "react";
-import { Dispatch } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import {
   Image,
   Pressable,
@@ -8,22 +7,22 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { REGISTER } from "../../navigators/Routes";
+import { LOGIN } from "../../navigators/Routes";
 import theme, { CustomText } from "../../Theme";
-import * as RootNavigator from "../../util/RootNavigator";
 import OnBoardingHeader from "../OnBoarding/components/Header";
+import * as RootNavigator from "../../util/RootNavigator";
 
-interface LoginProps {
+interface RegisterProps {
   setAuthentication: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Login({ setAuthentication }: LoginProps) {
+export default function Register({ setAuthentication }: RegisterProps) {
   return (
     <View style={{ flex: 1 }}>
       <OnBoardingHeader {...{ hasPrevious: true, setAuthentication }} />
-      <CustomText variant="header1"> Login to your account</CustomText>
+      <CustomText variant="header1">Create an account</CustomText>
       <CustomText variant="caption" style={styles.captionText}>
-        Good to see you again, enter your details below to continue ordering.
+        Welcome friend, enter your details so lets get started in ordering food.
       </CustomText>
 
       <View style={styles.formContainer}>
@@ -39,10 +38,16 @@ export default function Login({ setAuthentication }: LoginProps) {
           </CustomText>
           <TextInput style={styles.input} placeholder="Enter password" />
         </View>
+        <View style={styles.inputContainer}>
+          <CustomText variant="inputLabel" style={styles.inputLabel}>
+            Confirm Password
+          </CustomText>
+          <TextInput style={styles.input} placeholder="Confirm password" />
+        </View>
 
         <Pressable onPress={() => setAuthentication(true)}>
           <CustomText variant="button" style={styles.loginButtonText}>
-            Login
+            Register
           </CustomText>
         </Pressable>
       </View>
@@ -63,10 +68,10 @@ export default function Login({ setAuthentication }: LoginProps) {
 
         <Pressable
           style={styles.registerContainer}
-          onPress={() => RootNavigator.navigate(REGISTER)}
+          onPress={() => RootNavigator.navigate(LOGIN)}
         >
           <CustomText variant="button" style={styles.registerText}>
-            Create an account
+            Login to my account
           </CustomText>
         </Pressable>
       </View>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Image, Pressable, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import theme, { CustomText } from "../../../Theme";
@@ -6,10 +6,12 @@ import * as RootNavigation from "../../../util/RootNavigator";
 
 interface OnBoardingHeaderProps {
   hasPrevious?: boolean;
+  setAuthentication?: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function OnBoardingHeader({
   hasPrevious,
+  setAuthentication,
 }: OnBoardingHeaderProps) {
   return (
     <SafeAreaView style={styles.header}>
@@ -20,7 +22,7 @@ export default function OnBoardingHeader({
         <CustomText variant="button">Back</CustomText>
       </Pressable>
       <Image source={require("../../../assets/logo.png")} style={styles.logo} />
-      <Pressable>
+      <Pressable onPress={() => setAuthentication(true)}>
         <CustomText variant="button" style={styles.skipButton}>
           Skip
         </CustomText>
