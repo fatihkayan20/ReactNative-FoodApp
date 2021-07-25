@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import theme, { CustomText } from "../../Theme";
+import HomeBottomNav from "./components/HomeBottomNav";
 import HomeHeader from "./components/HomeHeader";
 
 interface HomeScreenProps {}
@@ -78,7 +79,7 @@ export default function HomeScreen() {
           </View>
         ))}
       </ScrollView>
-      <CustomText></CustomText>
+      <HomeBottomNav />
     </View>
   );
 }
