@@ -4,6 +4,8 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import theme, { CustomText } from "../../Theme";
 import HomeHeader from "../HomeScreen/components/HomeHeader";
 import { Ionicons } from "@expo/vector-icons";
+import { CART } from "../../navigators/Routes";
+import * as RootNavigator from "../../util/RootNavigator";
 
 interface DetailScreenProps {}
 
@@ -77,7 +79,10 @@ export default function DetailScreen() {
         </CustomText>
       </CustomText>
 
-      <Pressable style={styles.cartContainer}>
+      <Pressable
+        style={styles.cartContainer}
+        onPress={() => RootNavigator.navigate(CART)}
+      >
         <CustomText variant="button" style={styles.cartText}>
           $23.99 Add to Cart
         </CustomText>
