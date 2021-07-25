@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import OnBoarding from "../screens/OnBoarding";
-import { HOME, LOGIN, ONBOARDING, REGISTER } from "./Routes";
+import { DETAIL, HOME, LOGIN, ONBOARDING, REGISTER } from "./Routes";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import HomeScreen from "../screens/HomeScreen";
+import DetailScreen from "../screens/DetailScreen";
 
 const Stack = createStackNavigator();
 export default function StackNavigator() {
@@ -30,6 +31,7 @@ export default function StackNavigator() {
         </>
       ) : (
         <>
+          <Stack.Screen name={DETAIL} component={DetailScreen} />
           <Stack.Screen name={HOME} component={HomeScreen} />
         </>
       )}

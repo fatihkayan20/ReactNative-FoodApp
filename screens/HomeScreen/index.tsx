@@ -64,7 +64,7 @@ export default function HomeScreen() {
         showsHorizontalScrollIndicator={false}
         style={styles.scroll}
       >
-        {RESTAURANTS.map((restaurant, index) => (
+        {RESTAURANTS.map((_, index) => (
           <View key={index} style={styles.restaurantCard}>
             <Image source={require("../../assets/bigburger.png")} />
             <CustomText variant="button" style={styles.restaurantTitle}>

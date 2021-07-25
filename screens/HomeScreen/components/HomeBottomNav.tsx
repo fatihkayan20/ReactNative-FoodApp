@@ -9,7 +9,7 @@ interface HomeBottomNavProps {}
 const { width } = Dimensions.get("window");
 export default function HomeBottomNav() {
   const [active, setActive] = useState(0);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(2);
 
   const getColor = (index: number) => {
     if (index === active) {
