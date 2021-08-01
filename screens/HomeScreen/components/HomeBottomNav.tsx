@@ -3,8 +3,14 @@ import { Dimensions } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 import theme, { CustomText } from "../../../Theme";
 import { Ionicons } from "@expo/vector-icons";
+import {CART, HOME} from "../../../navigators/Routes";
+import * as RootNavigator from "../../../util/RootNavigator";
 
 interface HomeBottomNavProps {}
+
+const ROUTES = [
+  HOME, HOME, HOME,HOME,CART
+]
 
 const { width } = Dimensions.get("window");
 export default function HomeBottomNav() {
@@ -18,19 +24,24 @@ export default function HomeBottomNav() {
     return theme.colors.darkGray;
   };
 
+  const handleRoute= (index:number) => {
+    setActive(index)
+    RootNavigator.navigate(ROUTES[index])
+  }
+
   return (
     <View style={styles.container}>
       <Ionicons
         name={active === 0 ? "md-home-sharp" : "md-home-outline"}
         color={getColor(0)}
         size={25}
-        onPress={() => setActive(0)}
+        onPress={() => handleRoute(0)}
       />
       <Ionicons
         name={active === 1 ? "heart" : "heart-outline"}
         color={getColor(1)}
         size={25}
-        onPress={() => setActive(1)}
+        onPress={() => handleRoute(1)}
       />
       <Ionicons
         name="search"
@@ -38,20 +49,20 @@ export default function HomeBottomNav() {
         iconStyle={styles.searchIcon}
         color={theme.colors.white}
         size={25}
-        onPress={() => setActive(2)}
+        onPress={() => handleRoute(2)}
       />
       <Ionicons
         name={active === 3 ? "notifications" : "notifications-outline"}
         color={getColor(3)}
         size={25}
-        onPress={() => setActive(3)}
+        onPress={() => handleRoute(3)}
       />
       <View>
         <Ionicons
           name={active === 4 ? "cart" : "cart-outline"}
           color={getColor(4)}
           size={25}
-          onPress={() => setActive(4)}
+          onPress={() => handleRoute(4)}
         />
         {count !== 0 && (
           <CustomText variant="caption" style={styles.badge}>
@@ -69,6 +80,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     position: "absolute",
+    marginHorizontal: -theme.spacing.l,
     bottom: 0,
     left: 0,
     width,

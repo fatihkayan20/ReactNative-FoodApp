@@ -13,6 +13,10 @@ export default function OnBoardingHeader({
   hasPrevious,
   setAuthentication,
 }: OnBoardingHeaderProps) {
+
+  const handleSkip = ()=> {
+    setAuthentication && setAuthentication(true)
+  }
   return (
     <SafeAreaView style={styles.header}>
       <Pressable
@@ -22,7 +26,7 @@ export default function OnBoardingHeader({
         <CustomText variant="button">Back</CustomText>
       </Pressable>
       <Image source={require("../../../assets/logo.png")} style={styles.logo} />
-      <Pressable onPress={() => setAuthentication(true)}>
+      <Pressable onPress={handleSkip}>
         <CustomText variant="button" style={styles.skipButton}>
           Skip
         </CustomText>

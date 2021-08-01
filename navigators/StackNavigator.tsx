@@ -32,9 +32,9 @@ export default function StackNavigator() {
         </>
       ) : (
         <>
-          <Stack.Screen name={CART} component={CartScreen} />
-          <Stack.Screen name={DETAIL} component={DetailScreen} />
-          <Stack.Screen name={HOME} component={HomeScreen} />
+            <Stack.Screen name={HOME} component={HomeScreen} />
+            <Stack.Screen name={DETAIL} component={DetailScreen} />
+            <Stack.Screen name={CART} component={CartScreen} />
         </>
       )}
     </Stack.Navigator>

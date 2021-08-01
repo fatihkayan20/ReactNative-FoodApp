@@ -25,7 +25,7 @@ export default function DetailScreen() {
   };
   return (
     <View style={styles.container}>
-      <HomeHeader />
+      <HomeHeader {...{canGoBack:true}} />
 
       <View style={styles.imageContainer}>
         <Image

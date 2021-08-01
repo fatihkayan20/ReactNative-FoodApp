@@ -3,18 +3,31 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import theme, { CustomText } from "../../../Theme";
 import { FontAwesome5 } from "@expo/vector-icons";
+import * as RootNavigator from "../../../util/RootNavigator"
 
-interface HomeHeaderProps {}
+interface HomeHeaderProps {
+  canGoBack?: boolean;
+  handleNavOpen?:() => void
+}
 
-export default function HomeHeader() {
+export default function HomeHeader({canGoBack,handleNavOpen}:HomeHeaderProps) {
+  const handleGoBack = () => {
+    RootNavigator.goBack();
+  }
+  const navOpenPress = () => {
+    handleNavOpen && handleNavOpen()
+  }
   return (
     <SafeAreaView style={styles.container}>
-      <Pressable>
+      {canGoBack ?
+          <FontAwesome5 name={"angle-left"}  size={25} onPress={handleGoBack}/>
+          :
+      <Pressable onPress={navOpenPress}>
         <View style={[styles.line, styles.firstLine]} />
         <View style={[styles.line, styles.secondLine]} />
         <View style={[styles.line, styles.thirdLine]} />
       </Pressable>
-
+      }
       <View>
         <View style={styles.centerTop}>
           <CustomText variant="header2" style={styles.delivery}>

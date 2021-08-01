@@ -11,7 +11,7 @@ const CART_ITEMS = [0, 0, 0, 0];
 export default function CartScreen() {
   return (
     <View style={styles.container}>
-      <HomeHeader />
+      <HomeHeader {...{canGoBack:true}} />
       <CustomText variant="header1" style={styles.mainText}>
         Your Cart
       </CustomText>
