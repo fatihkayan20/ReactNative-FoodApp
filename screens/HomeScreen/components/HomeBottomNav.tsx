@@ -3,13 +3,13 @@ import { Dimensions } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 import theme, { CustomText } from "../../../Theme";
 import { Ionicons } from "@expo/vector-icons";
-import {CART, HOME} from "../../../navigators/Routes";
+import {CART, HOME, ORDERS} from "../../../navigators/Routes";
 import * as RootNavigator from "../../../util/RootNavigator";
 
 interface HomeBottomNavProps {}
 
 const ROUTES = [
-  HOME, HOME, HOME,HOME,CART
+  HOME, ORDERS, HOME,HOME,CART
 ]
 
 const { width } = Dimensions.get("window");

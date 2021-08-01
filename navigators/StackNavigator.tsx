@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import OnBoarding from "../screens/OnBoarding";
-import { CART, DETAIL, HOME, LOGIN, ONBOARDING, REGISTER } from "./Routes";
+import {CART, DETAIL, HOME, LOGIN, ONBOARDING, ORDERS, REGISTER} from "./Routes";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import HomeScreen from "../screens/HomeScreen";
 import DetailScreen from "../screens/DetailScreen";
 import CartScreen from "../screens/CartScreen";
+import OrdersScreen from "../screens/OrdersScreen";
 
 const Stack = createStackNavigator();
 export default function StackNavigator() {
@@ -35,6 +36,7 @@ export default function StackNavigator() {
             <Stack.Screen name={HOME} component={HomeScreen} />
             <Stack.Screen name={DETAIL} component={DetailScreen} />
             <Stack.Screen name={CART} component={CartScreen} />
+            <Stack.Screen name={ORDERS} component={OrdersScreen} />
         </>
       )}
     </Stack.Navigator>
